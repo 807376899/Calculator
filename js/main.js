@@ -32,8 +32,13 @@ function resetInputNumber() {
   inputFlag = false; // Reset input flag
 }
 function clearCalculator() {
-  firstNumber = NaN;
-  secondNumber = NaN;
+  firstNumber = 0;
+  secondNumber = 0;
+  firstNumberFlag = false;
+  secondNumberFlag = false;
+  inputFlag = false;
+  equalsFlag = false;
+  inputNumber = 0;
   currentOperation = '';
   result = 0;
   resetInputNumber(); // Reset input number
@@ -44,6 +49,7 @@ let firstNumberFlag=false;
 let secondNumber=0;
 let secondNumberFlag=false;
 let currentOperation='';
+let operationFlag=false;
 let result=0;
 let inputNumber=0;
 let inputFlag=false;
@@ -53,6 +59,8 @@ const operators = document.querySelectorAll(".operator");
 input.value = 0; // Initialize input display
 let numbers = document.querySelectorAll('.number');
 let equals=document.querySelector('#equals');
+let clearBtn=document.querySelector('#clear');
+clearBtn.addEventListener('click', clearCalculator);
 numbers.forEach((number) => {
   number.addEventListener('click', (event) => {
     const target = event.target;
@@ -60,11 +68,12 @@ numbers.forEach((number) => {
       input.value = inputNumber;
       inputFlag = true; // Set flag to indicate input is being entered
       equalsFlag = false; // Reset equals flag on new input
+      operationFlag = false; // Reset operation flag on new input
   });
 });
 operators.forEach((operator)=>{operator.addEventListener('click', (event) =>{
   target = event.target;
-  
+  operationFlag = true; // Set operation flag
   if (inputFlag) {
     if(firstNumberFlag === false) {      
       firstNumber = inputNumber;
@@ -82,15 +91,13 @@ operators.forEach((operator)=>{operator.addEventListener('click', (event) =>{
         currentOperation = target.id;
       }
     }}
+    else{
+      currentOperation = target.id;
+      secondNumberFlag = false; // Reset second number flag
+    }
 })
 });
-/*TO DO: 
-Add event listener for clear button
-"a+b="(result)
-"="(result+b) not "result+result"
-"a+b="(result)
-"+="(result+result) not (result+b) 
-*/
+
 equals.addEventListener('click', () => {
   if (currentOperation && firstNumberFlag===true) {
     equalsFlag = true; // Set equals flag
@@ -102,12 +109,18 @@ equals.addEventListener('click', () => {
       resetInputNumber(); // Reset input number after operation
     }else{
       if(secondNumberFlag === false) {
-        secondNumber = firstNumber; // Use first number if no second input
+        if(operationFlag === true){
+          secondNumber = result; 
+        }
+        /*else{
+          secondNumber = result; 
+        }*/
       }
       result = operation(currentOperation, firstNumber, secondNumber);
       input.value = result;
       firstNumber = result; // Allow chaining operations
       inputNumber = 0; // Reset input number
     }
+    operationFlag = false; // Reset operation flag after equals
   }
 });

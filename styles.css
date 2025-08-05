@@ -1,0 +1,34 @@
+body{
+    font-family: Arial, sans-serif;
+    
+    padding: 20px;
+}
+.operator,
+#equals{
+    background-color: #f8fdb5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.operator:hover{
+    background-color: #f0f0f0;
+}
+.number,
+#decimal{
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+input{
+    
+    height: 50px;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
