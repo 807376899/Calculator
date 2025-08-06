@@ -1,34 +1,63 @@
-body{
-    font-family: Arial, sans-serif;
-    
-    padding: 20px;
+body {
+  font-family: Arial, sans-serif;
+
+  padding: 20px;
 }
 .operator,
-#equals{
-    background-color: #f8fdb5;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
+#equals,
+.number,
+#decimal,
+#clear,
+#backspace,
+#round2,
+#posnag {
+  width: 75px;
+  height: 90px;
+  margin: 5px;
+  border: 1px solid #dac6eb;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  font: 2em sans-serif;
+  color: #878356;
 }
-.operator:hover{
-    background-color: #f0f0f0;
+.operator,
+#equals {
+  background-color: #f8fdb5;
+}
+.operator:hover {
+  background-color: #dac6eb;
 }
 .number,
-#decimal{
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
+#decimal {
+  background-color: #edebe7;
 }
-input{
-    
-    height: 50px;
-    font-size: 24px;
-    text-align: right;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+#clear,
+#backspace,
+#round2,
+#posnag {
+  background-color: #dfcbb3;
+  color: #edebe7;
+}
+input {
+  width: 320px;
+  height: 80px;
+  font-size: 24px;
+  text-align: right;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font: 2em sans-serif;
+  color: #878356;
+  background-color: #edebe7;
+}
+table {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #c0bc97;
+}
+td {
+  text-align: center;
 }
