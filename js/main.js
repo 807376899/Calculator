@@ -44,6 +44,13 @@ function clearCalculator() {
   resetInputNumber(); // Reset input number
   input.value = 0; // Clear the input display
 }
+function plusMinus() {
+  if (inputFlag) {
+    inputNumber = -inputNumber;
+    input.value = inputNumber;
+  } 
+  plusFlag = !plusFlag; // Toggle the plusFlag
+}
 let firstNumber = 0;
 let firstNumberFlag = false;
 let secondNumber = 0;
@@ -54,23 +61,30 @@ let result = 0;
 let inputNumber = 0;
 let inputFlag = false;
 let equalsFlag = false;
+let plusFlag = true;
 let input = document.querySelector("input");
 const operators = document.querySelectorAll(".operator");
 input.value = 0; // Initialize input display
 let numbers = document.querySelectorAll(".number");
 let equals = document.querySelector("#equals");
 let clearBtn = document.querySelector("#clear");
+let plusMinusBtn = document.querySelector("#plusMinus");
 clearBtn.addEventListener("click", clearCalculator);
 numbers.forEach((number) => {
   number.addEventListener("click", (event) => {
     const target = event.target;
-    inputNumber = inputNumber * 10 + parseInt(target.id);
+    if (plusFlag) {
+      inputNumber = inputNumber * 10 + parseInt(target.id);
+    } else {
+      inputNumber = inputNumber * 10 - parseInt(target.id);
+    }
     input.value = inputNumber;
     inputFlag = true; // Set flag to indicate input is being entered
     equalsFlag = false; // Reset equals flag on new input
     operationFlag = false; // Reset operation flag on new input
   });
 });
+plusMinusBtn.addEventListener("click", plusMinus);
 operators.forEach((operator) => {
   operator.addEventListener("click", (event) => {
     target = event.target;

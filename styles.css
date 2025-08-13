@@ -10,7 +10,7 @@ body {
 #clear,
 #backspace,
 #round2,
-#posnag {
+#plusMinus {
   width: 75px;
   height: 90px;
   margin: 5px;
@@ -35,7 +35,7 @@ body {
 #clear,
 #backspace,
 #round2,
-#posnag {
+#plusMinus {
   background-color: #dfcbb3;
   color: #edebe7;
 }
