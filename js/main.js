@@ -189,7 +189,11 @@ numbers.forEach((number) => {
         inputNumber = inputNumber * 10 + parseInt(target.id);
       }
     } else {
-      inputNumber = inputNumber * 10 - parseInt(target.id);
+      if (decimalFlag) {
+        inputNumber = parseFloat(input.value + target.id);
+      } else {
+        inputNumber = inputNumber * 10 - parseInt(target.id);
+      }
     }
     input.value = inputNumber;
     inputFlag = true; // Set flag to indicate input is being entered
