@@ -146,6 +146,7 @@ let clearBtn = document.querySelector("#clear");
 let plusMinusBtn = document.querySelector("#plusMinus");
 let roundToTwoBtn = document.querySelector("#round2");
 let decimal = document.querySelector("#decimal");
+let backspaceBtn = document.querySelector("#backspace");
 
 // Event listeners
 roundToTwoBtn.addEventListener("click", () => {
@@ -254,5 +255,18 @@ equals.addEventListener("click", () => {
       inputNumber = 0; // Reset input number
     }
     operationFlag = false; // Reset operation flag after equals
+  }
+});
+backspaceBtn.addEventListener("click", () => {
+  if (inputFlag) {
+    let inputValue = input.value.toString();
+    if (inputValue.length > 1) {
+      inputValue = inputValue.slice(0, -1);
+      input.value = inputValue;
+      inputNumber = parseFloat(inputValue);
+    } else {
+      input.value = "0";
+      inputNumber = 0;
+    }
   }
 });
